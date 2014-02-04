@@ -87,7 +87,7 @@ class Anime(MediaTypeManager):
         for episode in list(show.children):
             episode.save()
             common.Q.put(('image.download', {'id': episode.id}))
-        updateElement(show)
+        updateElement(show, new_node_status=common.getStatusByID(self.c.new_node_status_select))
         return True
 
 
